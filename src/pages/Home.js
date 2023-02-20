@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProjectCard from "../components/ProjectCard";
+import ProjectForm from "../components/ProjectForm";
 
 const Home = () => {
   const [projects, setProjects] = useState([]);
@@ -26,9 +27,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home container mx-auto py-16 grid grid-cols-3">
-      <div className="left col-span-2">
-        <h2 className="text-4xl font-medium text-sky-400 mb-10">
+    <div className="home container mx-auto py-16 grid grid-cols-7 gap-10">
+      <div className="left col-span-5">
+        <h2 className="text-2xl font-medium text-sky-400 mb-10">
           All Projects
         </h2>
         <div className="projects-wrapper flex gap-10 flex-wrap">
@@ -38,7 +39,7 @@ const Home = () => {
             ))}
         </div>
       </div>
-      <div className="right"></div>
+      <ProjectForm />
     </div>
   );
 };

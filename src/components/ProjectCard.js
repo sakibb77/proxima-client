@@ -10,7 +10,7 @@ const ProjectCard = ({ project }) => {
           {project.tech}
         </span>
       </div>
-      <div className="middle text-slate-300 flex gap-10 text-base">
+      <div className="middle text-slate-300 flex gap-5 text-base">
         <div className="left flex flex-col">
           <span>Budget: {project.budget}</span>
           <span>
