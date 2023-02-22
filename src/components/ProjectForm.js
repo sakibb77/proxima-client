@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useProjectContext } from "../hooks/useProjectContext";
 
 const ProjectForm = () => {
   const [title, setTitle] = useState("");
@@ -9,11 +10,13 @@ const ProjectForm = () => {
   const [dev, setDev] = useState("");
   const [error, setError] = useState(null);
 
+  const { dispatch } = useProjectContext();
+
   //post request
   const handleSubmit = async (e) => {
     e.preventDefault();
     //data
-    const projectData = { title, tech, budget, duration, manager, dev };
+    const projectDataObj = { title, tech, budget, duration, manager, dev };
 
     //post req
     const res = await fetch("http://localhost:4000/api/projects", {
@@ -21,12 +24,12 @@ const ProjectForm = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(projectData),
+      body: JSON.stringify(projectDataObj),
     });
 
     const json = await res.json();
 
-    //!req.ok set error
+    //!res.ok
     if (!res.ok) {
       setError(json.error);
     }
@@ -41,7 +44,7 @@ const ProjectForm = () => {
       setManager("");
       setError(null);
 
-      console.log("new project has been added to the data base", json);
+      dispatch({ type: "CREATE_PROJECT", payload: json });
     }
   };
 
