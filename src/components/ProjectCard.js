@@ -1,6 +1,6 @@
 import React from "react";
-import { projectReducer } from "../context/ProjectContext";
 import { useProjectContext } from "../hooks/useProjectContext";
+import moment from "moment";
 
 const ProjectCard = ({ project }) => {
   const { dispatch } = useProjectContext();
@@ -19,7 +19,7 @@ const ProjectCard = ({ project }) => {
   };
 
   return (
-    <div className="project-card bg-slate-800 p-5 rounded-xl shadow-xl border border-slate-700 flex flex-col gap-5 w-[26rem]">
+    <div className="project-card bg-slate-800 p-5 rounded-xl shadow-xl border border-slate-700 flex flex-col gap-5 w-[28rem]">
       <div className="top">
         <span className="text-sky-400">ID: {project._id}</span>
         <h3 className="text-2xl font-medium">{project.title}</h3>
@@ -31,10 +31,10 @@ const ProjectCard = ({ project }) => {
         <div className="left flex flex-col">
           <span>Budget: {project.budget}</span>
           <span>
-            Added on: {new Date(project.createdAt).toLocaleDateString()}
+            Added: {moment(project.createdAt).format("MMM/DD/hh/mm A")}
           </span>
           <span>
-            Last updated: {new Date(project.updatedAt).toLocaleDateString()}
+            Updated: {moment(project.updatedAt).format("MMM/DD/hh/mm A")}
           </span>
         </div>
         <div className="right flex flex-col">

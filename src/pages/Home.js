@@ -33,8 +33,8 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="home container mx-auto py-16 grid grid-cols-7 gap-10">
-      <div className="left col-span-5">
+    <div className="home container mx-auto py-16 grid grid-cols-8 gap-10">
+      <div className="left col-span-6">
         <h2 className="text-2xl font-medium text-sky-400 mb-10">
           All Projects
         </h2>
