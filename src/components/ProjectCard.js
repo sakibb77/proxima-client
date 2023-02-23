@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useProjectContext } from "../hooks/useProjectContext";
 import moment from "moment";
+import ProjectForm from "./ProjectForm";
 
 const ProjectCard = ({ project }) => {
   const { dispatch } = useProjectContext();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
+  //delete handler
   const handleDelete = async () => {
     const res = await fetch(
       `http://localhost:4000/api/projects/${project._id} `,
@@ -16,6 +20,18 @@ const ProjectCard = ({ project }) => {
     if (res.ok) {
       dispatch({ type: "DELETE_PROJECT", payload: json });
     }
+  };
+
+  //update handler
+  const handleUpdate = () => {
+    setIsModalOpen(true);
+    setIsOverlayOpen(true);
+  };
+
+  //overlay handler
+  const handleOverlay = () => {
+    setIsModalOpen(false);
+    setIsOverlayOpen(false);
   };
 
   return (
@@ -47,7 +63,10 @@ const ProjectCard = ({ project }) => {
         </div>
       </div>
       <div className="bottom flex gap-5">
-        <button className="bg-sky-400 text-slate-900 font-medium py-2 px-5 rounded-md shadow-xl hover:bg-sky-50 duration-300">
+        <button
+          onClick={handleUpdate}
+          className="bg-sky-400 text-slate-900 font-medium py-2 px-5 rounded-md shadow-xl hover:bg-sky-50 duration-300"
+        >
           Update
         </button>
         <button
@@ -56,6 +75,27 @@ const ProjectCard = ({ project }) => {
         >
           delete
         </button>
+      </div>
+
+      {/* overlay */}
+      <div
+        onClick={handleOverlay}
+        className={`overlay fixed z-[1] h-screen w-screen bg-slate-900/50 backdrop-blur-sm top-0 left-0 right-0 bottom-0
+       ${isOverlayOpen ? "" : "hidden"}`}
+      ></div>
+
+      {/* modal */}
+
+      <div
+        className={`update-modal fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-800 p-10 rounded-xl shadow-xl border border-slate-700 z-[2] ${
+          isModalOpen ? "" : "hidden"
+        }`}
+      >
+        <ProjectForm
+          project={project}
+          setIsModalOpen={setIsModalOpen}
+          setIsOverlayOpen={setIsOverlayOpen}
+        />
       </div>
     </div>
   );

@@ -59,6 +59,20 @@ export const projectReducer = (state, action) => {
         ),
       };
 
+    case "UPDATE_PROJECT":
+      const [existingProject] = state.projects.filter(
+        (project) => project._id === action.payload._id
+      );
+
+      return {
+        ...state,
+        projects: [
+          action.payload,
+          ...state.projects.filter(
+            (project) => project._id !== existingProject._id
+          ),
+        ],
+      };
     default:
       return state;
   }
