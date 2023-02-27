@@ -47,10 +47,10 @@ const ProjectCard = ({ project }) => {
         <div className="left flex flex-col">
           <span>Budget: {project.budget}</span>
           <span>
-            Added: {moment(project.createdAt).format("MMM/DD/hh/mm A")}
+            Added: {moment(project.createdAt).format("MMM/DD/hh.mm A")}
           </span>
           <span>
-            Updated: {moment(project.updatedAt).format("MMM/DD/hh/mm A")}
+            Updated: {moment(project.updatedAt).format("MMM/DD/hh.mm A")}
           </span>
         </div>
         <div className="right flex flex-col">

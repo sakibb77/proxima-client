@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import { ProjectContextProvider } from "./context/ProjectContext";
+import { AuthContextProvider } from "./context/AuthContext";
 import App from "./App";
 import "./index.css";
 
@@ -10,7 +11,9 @@ root.render(
   <BrowserRouter>
     <React.StrictMode>
       <ProjectContextProvider>
-        <App />
+        <AuthContextProvider>
+          <App />
+        </AuthContextProvider>
       </ProjectContextProvider>
     </React.StrictMode>
   </BrowserRouter>
