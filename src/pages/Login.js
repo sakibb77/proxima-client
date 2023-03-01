@@ -1,20 +1,33 @@
 import { useState } from "react";
+import { useLogin } from "../hooks/useLogin";
 
 const Login = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { login, error, loading } = useLogin();
+
+  const loginHandler = async (e) => {
+    e.preventDefault();
+
+    //login user
+    await login(email, password);
+  };
 
   return (
-    <form className="flex flex-col gap-5 py-20 mx-auto max-w-sm">
-      <h2 className="text-2xl font-medium text-sky-400">Login</h2>
+    <form
+      onSubmit={loginHandler}
+      className="flex flex-col gap-5 py-20 mx-auto max-w-sm"
+    >
+      <h2 className="text-2xl font-medium text-amber-400">Login</h2>
 
       <div className="form-control flex flex-col gap-2">
         <label htmlFor="email" className="cursor-pointer">
           Email Address
         </label>
         <input
-          onChange={(e) => e.target.value}
           value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter Your Email"
           className="bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-sky-400 duration-300 border-slate-500"
           type="text"
@@ -28,22 +41,28 @@ const Login = () => {
           Password
         </label>
         <input
-          onChange={(e) => e.target.value}
           value={password}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="Enter Your Password"
           className="bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-sky-400 duration-300 border-slate-500"
-          type="text"
+          type="password"
           name=""
           id="password"
         />
       </div>
 
       <button
+        disabled={loading}
         type="submit"
         className="bg-sky-400 rounded-lg text-slate-900 py-3 text-lg font-medium"
       >
         Log in
       </button>
+      {error && (
+        <p className="bg-rose-500/20 rounded-md text-rose-500 border border-rose-500 p-2 text-sm tracking-wide">
+          {error}
+        </p>
+      )}
     </form>
   );
 };

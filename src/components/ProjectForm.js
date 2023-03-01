@@ -22,7 +22,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
     //if there is no project send post request
     if (!project) {
       //post req
-      const res = await fetch("http://localhost:4000/api/projects", {
+      const res = await fetch("http://localhost:5000/api/projects", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -95,7 +95,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
       onSubmit={handleSubmit}
       className="col-span-2 flex flex-col gap-3"
     >
-      <h2 className="text-2xl font-medium text-sky-400 mb-10">
+      <h2 className="text-2xl font-medium text-amber-400 mb-10">
         {project ? "Update Your Project" : "Add a New Project"}
       </h2>
 
@@ -104,7 +104,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
           <div className="form-control flex flex-col gap-2">
             <label
               htmlFor="title"
-              className="cursor-pointer hover:text-sky-400 duration-300"
+              className="cursor-pointer hover:text-indigo-400 duration-300"
             >
               Project Title
             </label>
@@ -115,7 +115,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
               placeholder="e.g. e-commerce website"
               name=""
               id="title"
-              className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-sky-400 duration-300 ${
+              className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-indigo-400 duration-300 ${
                 emptyFields.includes("title")
                   ? "border-rose-500"
                   : "border-slate-500"
@@ -125,7 +125,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
           <div className="form-control flex flex-col gap-2">
             <label
               htmlFor="tech"
-              className="cursor-pointer hover:text-sky-400 duration-300"
+              className="cursor-pointer hover:text-indigo-400 duration-300"
             >
               Technologies
             </label>
@@ -136,7 +136,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
               placeholder="e.g. e-commerce website"
               name=""
               id="tech"
-              className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-sky-400 duration-300 ${
+              className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-indigo-400 duration-300 ${
                 emptyFields.includes("tech")
                   ? "border-rose-500"
                   : "border-slate-500"
@@ -146,7 +146,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
           <div className="form-control flex flex-col gap-2">
             <label
               htmlFor="budget"
-              className="cursor-pointer hover:text-sky-400 duration-300"
+              className="cursor-pointer hover:text-indigo-400 duration-300"
             >
               Budget(in USD)
             </label>
@@ -157,7 +157,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
               placeholder="e.g. 500"
               name=""
               id="budget"
-              className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-sky-400 duration-300 ${
+              className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-indigo-400 duration-300 ${
                 emptyFields.includes("budget")
                   ? "border-rose-500"
                   : "border-slate-500"
@@ -170,7 +170,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
           <div className="form-control flex flex-col gap-2">
             <label
               htmlFor="duration"
-              className="cursor-pointer hover:text-sky-400 duration-300"
+              className="cursor-pointer hover:text-indigo-400 duration-300"
             >
               Duration(in weeks)
             </label>
@@ -181,7 +181,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
               placeholder="e.g. 4"
               name=""
               id="duration"
-              className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-sky-400 duration-300 ${
+              className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-indigo-400 duration-300 ${
                 emptyFields.includes("duration")
                   ? "border-rose-500"
                   : "border-slate-500"
@@ -191,7 +191,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
           <div className="form-control flex flex-col gap-2">
             <label
               htmlFor="manager"
-              className="cursor-pointer hover:text-sky-400 duration-300"
+              className="cursor-pointer hover:text-indigo-400 duration-300"
             >
               Manager
             </label>
@@ -202,7 +202,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
               placeholder="e.g. sakib biswas"
               name=""
               id="manager"
-              className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-sky-400 duration-300 ${
+              className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-indigo-400 duration-300 ${
                 emptyFields.includes("manager")
                   ? "border-rose-500"
                   : "border-slate-500"
@@ -212,7 +212,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
           <div className="form-control flex flex-col gap-2">
             <label
               htmlFor="dev"
-              className="cursor-pointer hover:text-sky-400 duration-300"
+              className="cursor-pointer hover:text-indigo-400 duration-300"
             >
               Developer
             </label>
@@ -223,7 +223,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
               placeholder="e.g. 5"
               name=""
               id="dev"
-              className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-sky-400 duration-300 ${
+              className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-indigo-400 duration-300 ${
                 emptyFields.includes("dev")
                   ? "border-rose-500"
                   : "border-slate-500"
@@ -235,7 +235,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
 
       <button
         type="submit"
-        className="bg-sky-400 rounded-lg text-slate-900 py-3"
+        className="bg-indigo-400 rounded-lg text-slate-900 py-3"
       >
         {project ? "Confirm Update" : "Add Project"}
       </button>

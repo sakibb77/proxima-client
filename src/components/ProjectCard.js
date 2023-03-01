@@ -37,7 +37,7 @@ const ProjectCard = ({ project }) => {
   return (
     <div className="project-card bg-slate-800 p-5 rounded-xl shadow-xl border border-slate-700 flex flex-col gap-5 w-[28rem]">
       <div className="top">
-        <span className="text-sky-400">ID: {project._id}</span>
+        <span className="text-indigo-400">ID: {project._id}</span>
         <h3 className="text-2xl font-medium">{project.title}</h3>
         <span className="uppercase text-xs tracking-widest text-slate-500 font-medium">
           {project.tech}
@@ -65,7 +65,7 @@ const ProjectCard = ({ project }) => {
       <div className="bottom flex gap-5">
         <button
           onClick={handleUpdate}
-          className="bg-sky-400 text-slate-900 font-medium py-2 px-5 rounded-md shadow-xl hover:bg-sky-50 duration-300"
+          className="bg-indigo-400 text-slate-900 font-medium py-2 px-5 rounded-md shadow-xl hover:bg-indigo-50 duration-300"
         >
           Update
         </button>
