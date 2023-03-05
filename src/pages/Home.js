@@ -36,7 +36,7 @@ const Home = () => {
     <div className="home container mx-auto py-16 grid grid-cols-8 gap-10">
       <div className="left col-span-6">
         <h2 className="text-2xl font-medium text-amber-400 mb-10 capitalize">
-          {projects.length < 1 ? "no projects" : "All Projects"}
+          {projects?.length < 1 ? "no projects" : "All Projects"}
         </h2>
         <div className="projects-wrapper flex gap-10 flex-wrap">
           {projects &&
