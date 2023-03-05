@@ -2,18 +2,28 @@ import React, { useState } from "react";
 import { useProjectContext } from "../hooks/useProjectContext";
 import moment from "moment";
 import ProjectForm from "./ProjectForm";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const ProjectCard = ({ project }) => {
   const { dispatch } = useProjectContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
+  const { user } = useAuthContext();
+
   //delete handler
   const handleDelete = async () => {
+    if (!user) {
+      return;
+    }
+
     const res = await fetch(
-      `http://localhost:4000/api/projects/${project._id} `,
+      `http://localhost:5000/api/projects/${project._id} `,
       {
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${user.token}`,
+        },
       }
     );
     const json = await res.json();

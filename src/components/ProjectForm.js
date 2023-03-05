@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useProjectContext } from "../hooks/useProjectContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
   const [title, setTitle] = useState(project ? project.title : "");
@@ -12,10 +13,15 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
   const [emptyFields, setEmptyFields] = useState([]);
 
   const { dispatch } = useProjectContext();
+  const { user } = useAuthContext();
 
   //post request
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!user) {
+      setError("you must be logged in!");
+      return;
+    }
     //data
     const projectDataObj = { title, tech, budget, duration, manager, dev };
 
@@ -26,6 +32,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
         method: "POST",
         headers: {
           "content-type": "application/json",
+          authorization: `Bearer ${user.token}`,
         },
         body: JSON.stringify(projectDataObj),
       });
@@ -57,11 +64,12 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
     if (project) {
       //patch req
       const res = await fetch(
-        `http://localhost:4000/api/projects/${project._id}`,
+        `http://localhost:5000/api/projects/${project._id}`,
         {
           method: "PATCH",
           headers: {
             "content-type": "application/json",
+            authorization: `Bearer ${user.token}`,
           },
           body: JSON.stringify(projectDataObj),
         }
@@ -116,7 +124,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
               name=""
               id="title"
               className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-indigo-400 duration-300 ${
-                emptyFields.includes("title")
+                emptyFields?.includes("title")
                   ? "border-rose-500"
                   : "border-slate-500"
               }`}
@@ -137,7 +145,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
               name=""
               id="tech"
               className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-indigo-400 duration-300 ${
-                emptyFields.includes("tech")
+                emptyFields?.includes("tech")
                   ? "border-rose-500"
                   : "border-slate-500"
               }`}
@@ -158,7 +166,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
               name=""
               id="budget"
               className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-indigo-400 duration-300 ${
-                emptyFields.includes("budget")
+                emptyFields?.includes("budget")
                   ? "border-rose-500"
                   : "border-slate-500"
               }`}
@@ -182,7 +190,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
               name=""
               id="duration"
               className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-indigo-400 duration-300 ${
-                emptyFields.includes("duration")
+                emptyFields?.includes("duration")
                   ? "border-rose-500"
                   : "border-slate-500"
               }`}
@@ -203,7 +211,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
               name=""
               id="manager"
               className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-indigo-400 duration-300 ${
-                emptyFields.includes("manager")
+                emptyFields?.includes("manager")
                   ? "border-rose-500"
                   : "border-slate-500"
               }`}
@@ -224,7 +232,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
               name=""
               id="dev"
               className={`bg-transparent border py-3 px-5 rounded-lg outline-none focus:border-indigo-400 duration-300 ${
-                emptyFields.includes("dev")
+                emptyFields?.includes("dev")
                   ? "border-rose-500"
                   : "border-slate-500"
               }`}

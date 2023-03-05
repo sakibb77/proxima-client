@@ -25,7 +25,10 @@ function App() {
           path="/signup"
           element={!user ? <Signup /> : <Navigate to={"/"} />}
         />
-        <Route path="*" element={<Home />} />
+        <Route
+          path="*"
+          element={user ? <Home /> : <Navigate to={"/login"} />}
+        />
       </Routes>
       <Footer />
     </div>

@@ -31,7 +31,7 @@ const Navbar = () => {
 
         {user && (
           <div className="flex gap-5 items-center">
-            <span>{user.email}</span>
+            <span className="text-red-50">{user.email}</span>
             <button
               onClick={handleLogout}
               type="submit"

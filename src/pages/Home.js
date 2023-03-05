@@ -2,41 +2,38 @@ import { useEffect, useState } from "react";
 import ProjectCard from "../components/ProjectCard";
 import ProjectForm from "../components/ProjectForm";
 import { useProjectContext } from "../hooks/useProjectContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const { user } = useAuthContext();
 
   const { projects, dispatch } = useProjectContext();
 
   useEffect(() => {
     const getProjects = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch("http://localhost:5000/api/projects");
-        if (!res.ok) throw new Error("Something went wrong");
-        const data = await res.json();
+      const res = await fetch("http://localhost:5000/api/projects", {
+        headers: {
+          authorization: `Bearer ${user.token}`,
+        },
+      });
+      if (!res.ok) throw new Error("Something went wrong");
+      const data = await res.json();
 
-        if (res.ok) {
-          dispatch({ type: "SET_PROJECTS", payload: data });
-        }
-
-        console.log(data);
-        setLoading(false);
-      } catch (err) {
-        console.log(err.message);
-        setLoading(false);
+      if (res.ok) {
+        dispatch({ type: "SET_PROJECTS", payload: data });
       }
     };
 
-    getProjects();
-  }, [dispatch]);
+    if (user) {
+      getProjects();
+    }
+  }, [dispatch, user]);
 
   return (
     <div className="home container mx-auto py-16 grid grid-cols-8 gap-10">
       <div className="left col-span-6">
-        <h2 className="text-2xl font-medium text-amber-400 mb-10">
-          All Projects
+        <h2 className="text-2xl font-medium text-amber-400 mb-10 capitalize">
+          {projects.length < 1 ? "no projects" : "All Projects"}
         </h2>
         <div className="projects-wrapper flex gap-10 flex-wrap">
           {projects &&
