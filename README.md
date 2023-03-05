@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Proxima
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Proxima is a lightweight and scalable RESTful API built with Node.js and Express. It provides a powerful solution for managing data resources in web and mobile applications, with support for basic CRUD functionality using GET, POST, PATCH, and DELETE methods.
 
-## Available Scripts
+## Featured Project Management
 
-In the project directory, you can run:
+Proxima is designed to be highly extensible and easy to integrate into existing projects. It supports various authentication methods, such as JWT and OAuth2, to keep data secure and private. The API is optimized for performance, with caching and other features to minimize latency and improve response times.
 
-### `npm start`
+## Tools
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Proxima is built using the following tools:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [MongoDB](https://www.mongodb.com/)
+- [Express.js](https://expressjs.com/)
+- [Node.js](https://nodejs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To install Proxima, follow these steps:
 
-### `npm run build`
+1. Clone the Proxima repository to your local machine using `git clone https://github.com/sakibb77/proxima-client.git`.
+2. Navigate to the project directory using `cd Proxima`.
+3. Install dependencies using `npm install`.
+4. Create a `.env` file and add your MongoDB connection string. Example: `MONGO_URI=mongodb://localhost/proxima`.
+5. Start the server using `npm start`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Clone Repo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To clone the Proxima repository, use one of the following links:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- HTTPS: `https://github.com/sakibb77/proxima-client.git`
+- SSH: `git@github.com:sakibb77/proxima-client.git`
+- GitHub CLI: `gh repo clone sakibb77/proxima-client`
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Links
+- [Live Demo](https://proxima-sb.netlify.app/)
+- [Frontend Repository](https://github.com/sakibb77/proxima-client.git)
+- [Backend Repository](https://github.com/sakibb77/proxima-server.git)
