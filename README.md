@@ -2,9 +2,18 @@
 
 Proxima is a lightweight and scalable RESTful API built with Node.js and Express. It provides a powerful solution for managing data resources in web and mobile applications, with support for basic CRUD functionality using GET, POST, PATCH, and DELETE methods.
 
-## Featured Project Management
 
-Proxima is designed to be highly extensible and easy to integrate into existing projects. It supports various authentication methods, such as JWT and OAuth2, to keep data secure and private. The API is optimized for performance, with caching and other features to minimize latency and improve response times.
+## Features
+
+- **Add Project**: Users can create new projects by providing the necessary details, such as the project name, description, and other relevant information.
+
+- **Delete Project**: This feature enables users to remove projects from the system. Once a project is deleted, all associated data, such as tasks or comments, will also be permanently removed.
+
+- **Update Project**: Users can update project details, such as the project name, description, or any other relevant information. This feature helps keep project information accurate and up to date.
+
+- **Edit Project**: This feature allows users to modify specific attributes of a project, such as the project status, priority, or due date. Users can easily make changes as the project progresses.
+
+- **JWT Authentication**: Proxima utilizes JWT (JSON Web Token) authentication to ensure secure access control. Users can create accounts, log in, and access the system only if they possess valid authentication tokens.
 
 ## Tools
 
